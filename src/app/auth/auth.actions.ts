@@ -1,4 +1,5 @@
 import { Action } from '@ngrx/store';
+import { User } from '../model/user.model';
 
 export enum AuthActionTypes {
   LoginAction = '[Login] Action',
@@ -9,9 +10,7 @@ export enum AuthActionTypes {
 
 export class Login implements Action {
   readonly type = AuthActionTypes.LoginAction;
-}
-export class Log implements Action {
-  readonly type = AuthActionTypes.LoginAction;
+  constructor( public pauload: {user: User}){}
 }
 
 
