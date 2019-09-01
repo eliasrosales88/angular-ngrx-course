@@ -14,8 +14,27 @@ type AuthState = {
   user: User
 }
 
+// INITIAL STATE OF THE APPLICATION
+const initialAuthState: AuthState = {
+  loggedIn: false,
+  user: undefined
+}
+
+
+
+//Data structure of the AppState
+export interface AppState {
+  
+  // auth is the first property inyected in the appState
+  auth: AuthState,
+  // courses: CoursesState,
+  // lessons: LessonsState
+}
+
+
+
 // Function to be executed by the reducer before injecting to the appState
-function authReducer( state: AuthState, action): AuthState {
+function authReducer( state: AuthState = initialAuthState, action): AuthState {
   switch(action.type){
     
     case AuthActionTypes.LoginAction:
@@ -25,18 +44,8 @@ function authReducer( state: AuthState, action): AuthState {
       }
     
     default:
-      return state
+      return state;
   }
-}
-
-
-//Data structure of the AppState
-export interface AppState {
-
-  // auth is the first property inyected in the appState
-  auth: AuthState,
-  // courses: CoursesState,
-  // lessons: LessonsState
 }
 
 export const reducers: ActionReducerMap<AppState> = {
