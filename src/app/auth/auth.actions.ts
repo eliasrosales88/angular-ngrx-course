@@ -13,5 +13,10 @@ export class Login implements Action {
   constructor( public payload: {user: User}){}
 }
 
+export class Logout implements Action {
+  readonly type = AuthActionTypes.LogoutAction;
+  constructor( ){}
+}
 
-export type AuthActions = Login;
+
+export type AuthActions = Login | Logout;
