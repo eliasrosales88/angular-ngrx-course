@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import { AppState } from './reducers';
 import { Logout } from './auth/auth.actions';
 import { map } from 'rxjs/operators';
+import { isLoggedIn, isLoggedOut } from './auth/auth.selectors';
 
 @Component({
   selector: 'app-root',
@@ -23,14 +24,12 @@ export class AppComponent implements OnInit {
 
       this.isLoggedIn$ = this.store
         .pipe(
-          map(state => state['auth'].loggedIn)
-          // map(state => state.auth.loggedIn)  IS GIVING ERROR
-        )
+          select(isLoggedIn)
+        );
       this.isLoggedOut$ = this.store
         .pipe(
-          map(state => !state['auth'].loggedIn)
-          // map(state => !state.auth.loggedIn) IS GIVING ERROR
-        )
+          select(isLoggedOut)
+        );
 
     }
 
